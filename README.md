@@ -35,7 +35,7 @@ organization's data.
 **Recommended — add as a marketplace:**
 
 1. Open **Customize → Plugins → Browse plugins**.
-2. Add this repository as a marketplace source: `<owner>/<repo>`.
+2. Add this repository as a marketplace source: `incaseofcrisis/claude`.
 3. Install **In Case of Crisis** from the catalog.
 
 **Quick trial installs (no marketplace setup):** download the packaged
@@ -47,9 +47,13 @@ update notifications the way a marketplace install does.
 ### Claude Code
 
 ```
-/plugin marketplace add <owner>/<repo>
-/plugin install in-case-of-crisis@<repo>
+/plugin marketplace add incaseofcrisis/claude
+/plugin install in-case-of-crisis@incaseofcrisis-claude
 ```
+
+The identifier after `@` is the marketplace's *name*, not its repo path — Claude
+Code derives it as `owner-repo` by default, but if your `.claude-plugin/marketplace.json`
+sets its own `"name"` field, use that value instead.
 
 ## Prerequisite
 
