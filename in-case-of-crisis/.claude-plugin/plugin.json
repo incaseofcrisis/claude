@@ -6,5 +6,6 @@
     "name": "RockDove Solutions"
   },
   "icon": "./icon.png",
-  "license": "MIT"
+  "license": "MIT",
+  "privacyPolicyUrl": "https://www.incaseofcrisis.ai/privacy"
 }
