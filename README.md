@@ -1,8 +1,4 @@
-<p align="center">
-  <img src="./assets/in-case-of-crisis-logo.png" alt="In Case of Crisis" width="110">
-</p>
-
-<h1 align="center">In Case of Crisis — Claude Plugin</h1>
+<h1 align="center"><img src="./assets/in-case-of-crisis-logo.png" width="32" align="absmiddle"> In Case of Crisis — Claude Plugin</h1>
 
 <p align="center">
   <img src="https://img.shields.io/badge/version-0.1.0-203864" alt="version 0.1.0">
@@ -10,7 +6,7 @@
   <img src="https://img.shields.io/badge/status-active-27AE60" alt="status active">
 </p>
 
-<p align="center"><em>Built by RockDove Solutions</em></p>
+<p align="center"><img src="./assets/rockdove-logo.png" width="18" align="absmiddle"> <em>Built by RockDove Solutions</em></p>
 
 ---
 
