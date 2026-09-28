@@ -10,25 +10,30 @@ up in conversation.
   In Case of Crisis connector (fire, severe weather, medical emergency,
   security threat, evacuation, lockdown, etc.) and how to browse or fetch a
   specific protocol from it.
-- **MCP server** — `.mcp.json` — references the "In Case of Crisis"
-  connector from Claude's connector directory by name.
+
+This plugin does not bundle an MCP server config. In Case of Crisis is a
+directory-listed connector app with a dynamic, OAuth-gated endpoint — those
+are connected through Claude's own connector flow, not declared in a
+plugin's `.mcp.json`. This is a skill-only plugin by design, not an
+omission.
 
 ## Setup
 
-Each person who installs this plugin connects their own In Case of Crisis
-account — Claude prompts for that the first time the connector's tools are
-used. No API keys, tokens, or hostnames are bundled with this plugin: the
-connector's endpoint is dynamic and resolved per-account, not a fixed URL.
+Installing this plugin does not connect In Case of Crisis for you — it only
+adds the skill. Each person connects their own In Case of Crisis account
+separately, through Claude's connector directory (Settings → Connectors),
+or via the connect prompt Claude surfaces automatically the first time the
+skill reaches for a tool that isn't connected yet.
 
 **Prerequisite:** the installer needs an existing In Case of Crisis account
-with their organization's protocols loaded. Without one, the plugin has
-nothing to connect to — it does not ship or embed any protocol content of
-its own.
+with their organization's protocols loaded. Without one, the connector has
+nothing to connect to — this plugin does not ship or embed any protocol
+content of its own.
 
-**First use:** the first time the skill calls the connector, Claude will
-prompt the installer to authorize their In Case of Crisis account (a
-one-time OAuth consent). After that, it's transparent — this is a standard
-step for OAuth-gated connectors, not specific to this plugin.
+**First use:** the first time the skill calls the connector, expect a
+one-time OAuth consent prompt for that account. After that, it's
+transparent — standard for OAuth-gated connector apps generally, not
+specific to this plugin.
 
 ## Usage
 
@@ -46,9 +51,7 @@ and the skill routes it to the connector automatically.
   physical-safety situations, not general business incidents or personal
   difficulties, to avoid misrouting unrelated "crisis" language from end
   users into this connector.
-- **Verify the name-only `.mcp.json` reference before distributing.** The
-  connector is referenced by name (no `url`/`type`) because it's a
-  dynamic-endpoint directory server rather than a static remote server.
-  Confirm this resolves correctly in your target install environment
-  (`claude plugin validate`, or a real test install that surfaces the
-  connector's authorization prompt) before shipping to clients.
+- **Test the connect prompt before distributing.** Because this plugin
+  doesn't declare the connector, confirm — with a real install — that
+  Claude actually offers to connect In Case of Crisis when the skill fires
+  for someone who hasn't connected it yet. Don't assume; verify.

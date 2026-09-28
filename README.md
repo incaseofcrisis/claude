@@ -4,6 +4,7 @@
   <img src="https://img.shields.io/badge/version-0.1.0-203864" alt="version 0.1.0">
   <img src="https://img.shields.io/badge/platform-Claude%20Cowork%20%7C%20Claude%20Code-3E91C5" alt="Claude Cowork | Claude Code">
   <img src="https://img.shields.io/badge/status-active-27AE60" alt="status active">
+  <img src="https://img.shields.io/badge/license-MIT-3E91C5" alt="license MIT">
 </p>
 
 <p align="center"><img src="./assets/rockdove-logo.png" width="18" align="absmiddle"> <em>Built by RockDove Solutions</em></p>
@@ -17,16 +18,18 @@ emergency, and incident-response protocols the moment a workplace safety
 situation comes up in conversation — fire, severe weather, medical
 emergency, security threat, evacuation, lockdown, and similar.
 
-It bundles two components into a single install:
+This plugin ships one component:
 
 | Component | What it does |
 |---|---|
 | **Skill** | Teaches Claude when to call the In Case of Crisis connector and how to route between fetching a specific protocol or browsing the full list. |
-| **MCP connector** | Connects to the In Case of Crisis directory service and retrieves an organization's own protocol content at runtime. |
 
-No protocol content ships inside this plugin. Every installer connects
-their own In Case of Crisis account, and only ever sees their own
-organization's data.
+It does not bundle an MCP server config. In Case of Crisis is a
+directory-listed, OAuth-gated connector app — those are connected through
+Claude's own connector flow (Settings → Connectors, or an automatic
+connect prompt), not declared inside a plugin. No protocol content ships
+inside this plugin either way: every installer connects their own In Case
+of Crisis account and only ever sees their own organization's data.
 
 ## Install
 
@@ -80,9 +83,10 @@ automatically.
 
 ## Security and privacy
 
-- **No credentials, tokens, or hostnames are bundled** with this plugin.
-  The connector's endpoint is dynamic and resolved per account through
-  Claude's connector directory.
+- **No credentials, tokens, hostnames, or MCP server config are bundled**
+  with this plugin — it's skill-only. Connecting In Case of Crisis happens
+  through Claude's own connector flow, separately from installing this
+  plugin.
 - **Data stays with the installer's own account.** This plugin does not
   bundle, cache, or transmit any organization's protocol content on its
   own behalf.
@@ -104,8 +108,4 @@ report an issue with this plugin.
 
 ## License
 
-<!-- No license has been selected for public distribution yet. Add a
-     LICENSE file (e.g., MIT, Apache-2.0, or a RockDove proprietary
-     license) before treating this repo as generally reusable. -->
-
-See `LICENSE` for terms.
+MIT — see [LICENSE](./LICENSE).
