@@ -30,23 +30,26 @@ organization's data.
 
 ## Install
 
-### Claude Cowork (recommended for most users)
+### Claude Cowork
 
-1. **Download** `in-case-of-crisis.plugin` from this repository.
-2. **Drag** the file into the Cowork sidebar, or open it directly from a
-   chat.
-3. **Confirm** the install when prompted.
+**Recommended — add as a marketplace:**
 
-No terminal or marketplace setup required.
+1. Open **Customize → Plugins → Browse plugins**.
+2. Add this repository as a marketplace source: `<owner>/<repo>`.
+3. Install **In Case of Crisis** from the catalog.
+
+**Quick trial installs (no marketplace setup):** download the packaged
+`.plugin` file from this repo's [Releases page](../../releases) and drag it
+into the Cowork sidebar, or open it from a chat. Confirm the install when
+prompted. Use this path for one-off trial installs; it won't receive
+update notifications the way a marketplace install does.
 
 ### Claude Code
 
 ```
-/plugin marketplace add <owner>/<marketplace-repo>
-/plugin install in-case-of-crisis@<marketplace-repo>
+/plugin marketplace add <owner>/<repo>
+/plugin install in-case-of-crisis@<repo>
 ```
-
-Replace `<owner>/<marketplace-repo>` with this repository's path.
 
 ## Prerequisite
 
@@ -85,9 +88,9 @@ automatically.
 
 ## Versioning
 
-This plugin follows the version pinned in `plugin.json`. Update checks only
-apply to marketplace installs — file-based installs (the Cowork drag-and-drop
-path) don't auto-update, so reinstall from a newer release when one's
+This plugin follows the version pinned in `plugin.json`. Marketplace
+installs check for updates automatically; installs from a downloaded
+`.plugin` Release asset don't — reinstall from a newer release when one's
 available.
 
 ## Support
