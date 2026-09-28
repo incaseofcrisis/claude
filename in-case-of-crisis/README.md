@@ -10,20 +10,16 @@ up in conversation.
   In Case of Crisis connector (fire, severe weather, medical emergency,
   security threat, evacuation, lockdown, etc.) and how to browse or fetch a
   specific protocol from it.
-
-This plugin does not bundle an MCP server config. In Case of Crisis is a
-directory-listed connector app with a dynamic, OAuth-gated endpoint — those
-are connected through Claude's own connector flow, not declared in a
-plugin's `.mcp.json`. This is a skill-only plugin by design, not an
-omission.
+- **MCP server** — `.mcp.json` — connects to In Case of Crisis's hosted
+  gateway (`https://mcpgateway.incaseofcrisis.com/mcp`) over Streamable
+  HTTP.
 
 ## Setup
 
-Installing this plugin does not connect In Case of Crisis for you — it only
-adds the skill. Each person connects their own In Case of Crisis account
-separately, through Claude's connector directory (Settings → Connectors),
-or via the connect prompt Claude surfaces automatically the first time the
-skill reaches for a tool that isn't connected yet.
+Installing this plugin adds both the skill and the connector reference.
+Each installer still authorizes their *own* In Case of Crisis account the
+first time it's used — the shared gateway URL doesn't skip that; it just
+tells Claude where to connect.
 
 **Prerequisite:** the installer needs an existing In Case of Crisis account
 with their organization's protocols loaded. Without one, the connector has
@@ -51,7 +47,8 @@ and the skill routes it to the connector automatically.
   physical-safety situations, not general business incidents or personal
   difficulties, to avoid misrouting unrelated "crisis" language from end
   users into this connector.
-- **Test the connect prompt before distributing.** Because this plugin
-  doesn't declare the connector, confirm — with a real install — that
-  Claude actually offers to connect In Case of Crisis when the skill fires
-  for someone who hasn't connected it yet. Don't assume; verify.
+- **Verify the transport type before distributing.** `.mcp.json` uses
+  `"type": "http"`, inferred from the URL ending in `/mcp` — this hasn't
+  been confirmed against a real install. If the connection fails, try
+  `"type": "sse"` instead. Confirm with a real test install that the
+  OAuth prompt actually appears and the tools resolve correctly.

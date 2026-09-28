@@ -18,18 +18,17 @@ emergency, and incident-response protocols the moment a workplace safety
 situation comes up in conversation — fire, severe weather, medical
 emergency, security threat, evacuation, lockdown, and similar.
 
-This plugin ships one component:
+It bundles two components into a single install:
 
 | Component | What it does |
 |---|---|
 | **Skill** | Teaches Claude when to call the In Case of Crisis connector and how to route between fetching a specific protocol or browsing the full list. |
+| **MCP connector** | Connects to In Case of Crisis's hosted gateway (`mcpgateway.incaseofcrisis.com`) over Streamable HTTP. |
 
-It does not bundle an MCP server config. In Case of Crisis is a
-directory-listed, OAuth-gated connector app — those are connected through
-Claude's own connector flow (Settings → Connectors, or an automatic
-connect prompt), not declared inside a plugin. No protocol content ships
-inside this plugin either way: every installer connects their own In Case
-of Crisis account and only ever sees their own organization's data.
+No protocol content ships inside this plugin. Every installer still
+authorizes their own In Case of Crisis account — the shared gateway URL
+tells Claude where to connect, but doesn't skip that per-account consent
+step — and only ever sees their own organization's data.
 
 ## Install
 
@@ -83,10 +82,10 @@ automatically.
 
 ## Security and privacy
 
-- **No credentials, tokens, hostnames, or MCP server config are bundled**
-  with this plugin — it's skill-only. Connecting In Case of Crisis happens
-  through Claude's own connector flow, separately from installing this
-  plugin.
+- **No credentials or tokens are bundled** with this plugin. `.mcp.json`
+  points at In Case of Crisis's public gateway URL, but authentication still
+  happens per installer through their own OAuth consent — the URL alone
+  grants no access.
 - **Data stays with the installer's own account.** This plugin does not
   bundle, cache, or transmit any organization's protocol content on its
   own behalf.
