@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "incaseofcrisis-claude",
+  "owner": {
+    "name": "RockDove Solutions"
+  },
+  "metadata": {
+    "description": "Official marketplace for RockDove Solutions' In Case of Crisis Claude plugin.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "in-case-of-crisis",
+      "source": "./in-case-of-crisis",
+      "description": "Surfaces an organization's own approved crisis, emergency, and incident-response protocols the moment a workplace safety situation comes up.",
+      "version": "0.1.0",
+      "author": {
+        "name": "RockDove Solutions"
+      },
+      "license": "MIT"
+    }
+  ]
+}
