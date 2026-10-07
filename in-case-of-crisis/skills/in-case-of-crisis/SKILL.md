@@ -19,19 +19,27 @@ before answering from general knowledge or memory. Pass the situation in
 the user's own words as `query`. Never guess at protocol content or invent
 steps — this connector is the source of truth.
 
+- To browse the organization's whole plan, call `list_crisis_protocols`
+  with no `query`.
+- Set `protocol_type` only when the user names a type: `Custom` for the
+  organization's own plans, `Sponsored` for In Case of Crisis-curated
+  protocols that carry a citation. Otherwise leave it unset.
+
 Then:
 
-- If `list_crisis_protocols` returns one option that clearly matches the
-  situation, call `get_crisis_protocol` with that option's exact `name`
-  and `event_id`, and pass the user's original wording as `asked`.
-- If it returns two or more plausible options, or the user asked to browse
-  the full plan, call `show_crisis_protocol_list` with the *same* `query`
-  and `protocol_type` values used in the `list_crisis_protocols` call, and
-  let the user pick from the card. Do not also re-list the options in
-  prose.
+- If one option clearly matches the situation, call `get_crisis_protocol`
+  with that option's `event_id` and pass the user's original wording as
+  `asked`. The `event_id` is the only thing that selects the protocol — two
+  plans can share a name — so never substitute `name` for it.
+- If two or more options plausibly match, list their names in your reply
+  and ask which one the user means, then call `get_crisis_protocol` with
+  the chosen option's `event_id`.
 - If nothing returned is a good match, say so plainly rather than
   substituting general knowledge.
 
-Relay the protocol's guidance as returned. Do not paraphrase or summarize
-safety-critical steps in a way that could change their meaning or drop a
-step.
+Leave the optional `model` field unset rather than guessing a value; it is
+audit metadata only.
+
+Relay the protocol's guidance as returned, including its escalation
+contacts and citation. Do not paraphrase or summarize safety-critical steps
+in a way that could change their meaning or drop a step.

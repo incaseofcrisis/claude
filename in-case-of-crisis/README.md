@@ -8,8 +8,8 @@ up in conversation.
 
 - **Skill** — `skills/in-case-of-crisis/` — teaches Claude when to call the
   In Case of Crisis connector (fire, severe weather, medical emergency,
-  security threat, evacuation, lockdown, etc.) and how to browse or fetch a
-  specific protocol from it.
+  security threat, evacuation, lockdown, etc.) and how to search for, and
+  then fetch, the protocol that matches.
 - **MCP server** — `.mcp.json` — connects to In Case of Crisis's hosted
   gateway (`https://mcpgateway.incaseofcrisis.com/mcp`) over Streamable
   HTTP.
@@ -36,6 +36,29 @@ specific to this plugin.
 Ask about a workplace safety situation — "there's a fire on the 3rd floor,"
 "what's our severe weather protocol," "walk me through our lockdown plan" —
 and the skill routes it to the connector automatically.
+
+## Tools
+
+The connector currently exposes two tools, which the skill calls in
+sequence — search first, then fetch the one protocol that matches:
+
+- **`list_crisis_protocols`** — searches the organization's approved
+  crisis, emergency, and incident-response material and returns matching
+  options. Optional inputs: `query` (the situation in the user's own words;
+  omit to browse the whole catalogue) and `protocol_type` (`All` by
+  default, `Custom` for the organization's own plans, `Sponsored` for In
+  Case of Crisis-curated protocols that carry a citation).
+- **`get_crisis_protocol`** — returns the full procedure text, escalation
+  contacts, and citation for one protocol. Requires `event_id` from the
+  list result (two plans can share a name, so the ID is what selects the
+  protocol). Also accepts `asked` (the user's original words, for the
+  connector's life-safety check) and `name` (informational only).
+
+Both tools also accept an optional `model` field, used only as audit
+metadata.
+
+Tool set last verified October 7, 2026. The connector defines these tools,
+not this plugin, so they can change independently of the plugin's version.
 
 ## Notes for distributors
 

@@ -22,7 +22,7 @@ It bundles two components into a single install:
 
 | Component | What it does |
 |---|---|
-| **Skill** | Teaches Claude when to call the In Case of Crisis connector and how to route between fetching a specific protocol or browsing the full list. |
+| **Skill** | Teaches Claude when to call the In Case of Crisis connector and how to search for, and then fetch, the protocol that matches the situation. |
 | **MCP connector** | Connects to In Case of Crisis's hosted gateway (`mcpgateway.incaseofcrisis.com`) over Streamable HTTP. |
 
 No protocol content ships inside this plugin. Every installer still
@@ -79,6 +79,37 @@ Ask about a workplace safety situation in plain language:
 
 The skill routes the request to your organization's own protocol data
 automatically.
+
+## Tools
+
+The In Case of Crisis connector currently exposes two tools. The skill uses
+them in sequence: search first, then fetch the one protocol that matches.
+
+| Tool | What it does |
+|---|---|
+| `list_crisis_protocols` | Searches your organization's approved crisis, emergency, and incident-response material — protocols, playbooks, and preparedness plans — and returns the matching options. |
+| `get_crisis_protocol` | Returns the full procedure text, escalation contacts, and citation for a single protocol. |
+
+**`list_crisis_protocols` inputs** (all optional)
+
+- `query` — the situation in the user's own words. Omit it to browse the
+  whole catalogue.
+- `protocol_type` — `All` (the default), `Custom` (your organization's own
+  plans), or `Sponsored` (curated by In Case of Crisis, with a citation).
+
+**`get_crisis_protocol` inputs**
+
+- `event_id` — required. Taken from the `list_crisis_protocols` result. Two
+  plans can share a name, so the ID is what selects the protocol.
+- `asked` — the user's original words, so the connector's life-safety check
+  evaluates what was actually asked.
+- `name` — informational only.
+
+Both tools also accept an optional `model` field, used only as audit
+metadata.
+
+*Tool set last verified October 7, 2026. The connector defines these tools,
+not this plugin, so they can change independently of the plugin's version.*
 
 ## Security and privacy
 
