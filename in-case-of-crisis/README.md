@@ -31,6 +31,10 @@ one-time OAuth consent prompt for that account. After that, it's
 transparent — standard for OAuth-gated connector apps generally, not
 specific to this plugin.
 
+Want just the connector, without this plugin? See the
+[connector-only setup instructions](https://github.com/incaseofcrisis/claude#connector-only-setup)
+for Claude.ai, Claude Desktop, and Cowork.
+
 ## Usage
 
 Ask about a workplace safety situation — "there's a fire on the 3rd floor,"
@@ -75,3 +79,8 @@ not this plugin, so they can change independently of the plugin's version.
   been confirmed against a real install. If the connection fails, try
   `"type": "sse"` instead. Confirm with a real test install that the
   OAuth prompt actually appears and the tools resolve correctly.
+
+## Support
+
+Email support@incaseofcrisis.com for setup help or to report an issue with
+this plugin or the connector.
