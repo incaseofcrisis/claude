@@ -11,6 +11,14 @@
 
 ---
 
+## Skool Community
+
+Signed up for In Case of Crisis AI? Start with the install guide. It walks
+you through adding the In Case of Crisis MCP connector to Claude, step by
+step.
+
+**[Download the Install Guide for Claude (PDF, v4.0)](./docs/icc-mcp-connector-install-guide-claude-v4.0.pdf)**
+
 ## What this is
 
 Two ways to give Claude access to your organization's In Case of Crisis
