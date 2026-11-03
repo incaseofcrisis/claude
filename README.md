@@ -11,15 +11,27 @@
 
 ---
 
-## Skool Community
+<h2 align="center">Skool Community</h2>
 
-Signed up for In Case of Crisis AI? Start with the install guide. It walks
-you through adding the In Case of Crisis MCP connector to Claude, step by
-step.
+<p align="center"><strong>New to In Case of Crisis AI? Start here.</strong></p>
 
-**[Download the Install Guide for Claude (PDF, v4.0)](./docs/icc-mcp-connector-install-guide-claude-v4.0.pdf)**
+<p align="center">
+  Your step-by-step guide to adding In Case of Crisis to Claude.<br>
+  Follow it after you sign up. It takes about 3 minutes.
+</p>
+
+<p align="center">
+  <a href="./docs/icc-mcp-connector-install-guide-claude-v4.0.pdf"><img src="https://img.shields.io/badge/%F0%9F%93%84%20Open%20the%20Install%20Guide-PDF%20v4.0-203864?style=for-the-badge" alt="Open the Install Guide, PDF v4.0"></a>
+</p>
+
+<p align="center"><sub>Prefer to follow along on this page? Jump to <a href="#connector-only-setup">Connector-only setup</a>.</sub></p>
+
+---
 
 ## What this is
+
+> *The rest of this page is reference material for plugin and connector setup.
+> If you just signed up, the install guide above is all you need.*
 
 Two ways to give Claude access to your organization's In Case of Crisis
 protocols:
